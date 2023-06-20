@@ -5,16 +5,18 @@ function updateTimer() {
 	var currentTime = new Date();
 
 	var day = currentTime.getDate();
-	var month = currentTime.getMonth();
+	var month = currentTime.getMonth() + 1;
 	var year = currentTime.getFullYear();
 	var formattedDate = day + "/" + month + "/" + year;
 
 	var hour = currentTime.getHours();
 	var min = currentTime.getMinutes();
 	var sec = currentTime.getSeconds();
-	var formattedTime = hour + ":" + min + ":" + sec;
+	var amPmIndicator = hour >= 12 ? "PM" : "AM";
+	hour = hour % 12 || 12;
+	var formattedTime = hour+ ":" + min + ":" + sec + " " + amPmIndicator;
 
-	return formattedDate + ", " + formattedTime;
+	elem.textContent = formattedDate + ", " + formattedTime;
 }
 
 
